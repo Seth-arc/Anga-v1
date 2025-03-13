@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Teaching Style Results | Anga</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="app-container">
+        <header class="results-header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26 4L48 17V39L26 52L4 39V17L26 4Z" fill="none" stroke="#0A84FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M26 16L38 23V37L26 44L14 37V23L26 16Z" fill="#0A84FF" fill-opacity="0.1" stroke="#0A84FF" stroke-width="1.5"/>
+                    <circle cx="26" cy="28" r="4" fill="#0A84FF" fill-opacity="0.4"/>
+                </svg>
+                <h1 class="logo-text">anga</h1>
+            </div>
+            <a href="index.html" class="results-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Home
+            </a>
+        </header>
+        
+        <main class="results-content">
+            <div class="results-header-section">
+                <h1 class="results-title">Your Teaching Style Profile</h1>
+                <p class="results-subtitle">Based on the Staffordshire Evaluation of Teaching Styles (SETS)©</p>
+            </div>
+            
+            <div class="results-card dominant-style">
+                <h2 class="card-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Your Dominant Teaching Style
+                </h2>
+                <div class="dominant-style-content">
+                    <div class="style-info">
+                        <h3 id="main-style-name" class="style-name"></h3>
+                        <p id="main-style-description" class="style-description"></p>
+                    </div>
+                    <div class="style-score">
+                        <span id="main-style-score"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="results-charts">
+                <div class="results-card chart-card">
+                    <h2 class="card-title">Teaching Style Hexagon</h2>
+                    <div id="hexagon-chart" class="hexagon-chart"></div>
+                </div>
+                
+                <div class="results-card chart-card">
+                    <h2 class="card-title">Style Strengths</h2>
+                    <div id="bar-chart" class="bar-chart"></div>
+                </div>
+            </div>
+            
+            <div class="results-card detailed-analysis">
+                <h2 class="card-title">Your Teaching Style Profile</h2>
+                <div id="detailed-styles" class="detailed-styles">
+                    <!-- Detailed style information will be inserted by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="save-results-section">
+                <h3>Save Your Results</h3>
+                <p>Would you like to save your results for future reference? Enter your details below:</p>
+                
+                <form id="save-results-form" class="save-results-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="user-full-name">Full Name</label>
+                            <input type="text" id="user-full-name" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="user-email">Email Address</label>
+                            <input type="email" id="user-email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-institution">Institution (Optional)</label>
+                        <input type="text" id="user-institution" placeholder="School, University or Organization">
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="consent-checkbox" required>
+                            I consent to having my assessment results stored for future reference and research purposes.
+                            <a href="privacy.html" target="_blank">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="button button-primary">Save Results</button>
+                        <button type="button" id="skip-save" class="button button-outline">Skip</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="results-actions" style="display: none;">
+                <button id="download-pdf" class="button button-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 16L12 8M12 16L8 12M12 16L16 12M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Download PDF Report
+                </button>
+                <button id="new-assessment" class="button button-outline">Start New Assessment</button>
+            </div>
+        </main>
+        
+        <div id="download-dialog" class="dialog">
+            <div class="dialog-content">
+                <h3>Prepare Your Report</h3>
+                <p>Your report will include personalized recommendations based on your dominant teaching style.</p>
+                
+                <div class="input-group">
+                    <label for="user-name">Your Name:</label>
+                    <input type="text" id="user-name" placeholder="Enter your name" autocomplete="name">
+                </div>
+                
+                <div class="input-group">
+                    <label for="user-institution">Institution (Optional):</label>
+                    <input type="text" id="user-institution" placeholder="School, university, or organization">
+                </div>
+                
+                <div class="report-options">
+                    <h4>Report Sections:</h4>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="include-profile" checked>
+                            Teaching Style Profile
+                        </label>
+                        <label>
+                            <input type="checkbox" id="include-recommendations" checked>
+                            Detailed Recommendations
+                        </label>
+                        <label>
+                            <input type="checkbox" id="include-online" checked>
+                            Online Teaching Strategies
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="report-preview">
+                    <h4>Your report will include:</h4>
+                    <ul>
+                        <li class="profile-preview">
+                            <div class="preview-icon">📊</div>
+                            <div class="preview-info">
+                                <strong>Teaching Style Profile</strong>
+                                <span>Complete breakdown of your teaching style strengths</span>
+                            </div>
+                        </li>
+                        <li class="recommendations-preview">
+                            <div class="preview-icon">📝</div>
+                            <div class="preview-info">
+                                <strong>Detailed Recommendations</strong>
+                                <span>Specific strategies tailored to your teaching style</span>
+                            </div>
+                        </li>
+                        <li class="online-preview">
+                            <div class="preview-icon">💻</div>
+                            <div class="preview-info">
+                                <strong>Online Teaching Strategies</strong>
+                                <span>Adaptations for digital learning environments</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="dialog-buttons">
+                    <button id="cancel-download" class="button button-outline">Cancel</button>
+                    <button id="confirm-download" class="button button-primary">Download PDF</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p class="copyright">© 2025 Anga · <a href="privacy.html">Privacy</a></p>
+                <p class="attribution">Based on SETS© by Mohanna, Chambers & Wall (2007)</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="js/scenarios.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/pdf-templates.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>
