@@ -4,6 +4,30 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Show loading screen
+    const loadingScreen = document.getElementById('loadingScreen');
+    const loadingBar = document.getElementById('loadingBar');
+    
+    loadingScreen.classList.add('active');
+    
+    // Simulate loading progress
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 10 + 5;
+        
+        if (progress > 100) {
+            progress = 100;
+            clearInterval(interval);
+            
+            // Hide loading screen after a short delay
+            setTimeout(() => {
+                loadingScreen.classList.remove('active');
+            }, 300);
+        }
+        
+        loadingBar.style.width = `${progress}%`;
+    }, 100);
+    
     // Initialize the assessment state
     let state = {
         currentQuestion: 0,
@@ -22,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressFill = document.getElementById('progress-fill');
     const currentQuestionEl = document.getElementById('current-question');
     const totalQuestionsEl = document.getElementById('total-questions');
+    const scaleLabels = document.querySelector('.scale-labels');
     
     // Check for resume
     const urlParams = new URLSearchParams(window.location.search);
@@ -43,7 +68,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     prevButton.addEventListener('click', goToPreviousQuestion);
-    nextButton.addEventListener('click', goToNextQuestion);
+    nextButton.addEventListener('click', function() {
+        // Check if we're on the last question and have all responses
+        if (state.currentQuestion === state.totalQuestions - 1 && 
+            state.responses.length === state.totalQuestions) {
+            // Make sure to save the state before navigating
+            saveState();
+            
+            // Use the shared loading screen function if available
+            if (typeof showLoadingScreen === 'function') {
+                showLoadingScreen('results.html');
+            } else {
+                // Fallback to direct navigation if the function isn't available
+                window.location.href = 'results.html';
+            }
+        } else {
+            // Not the last question, proceed normally
+            goToNextQuestion();
+        }
+    });
     
     // Handle response selection
     function handleResponseChange() {
@@ -72,22 +115,111 @@ document.addEventListener('DOMContentLoaded', function() {
     // Go to the next question
     function goToNextQuestion() {
         if (state.currentQuestion < state.totalQuestions - 1) {
-            state.currentQuestion++;
-            updateUI();
-        } else {
-            // We're at the last question, go to results
-            if (state.responses.length === state.totalQuestions) {
-                window.location.href = 'results.html';
-            }
+            // Show mini loading animation between questions
+            showMiniLoading(() => {
+                state.currentQuestion++;
+                updateUI();
+            });
         }
+        // The else case (last question) is now handled in the click event listener
     }
     
     // Go to the previous question
     function goToPreviousQuestion() {
         if (state.currentQuestion > 0) {
-            state.currentQuestion--;
-            updateUI();
+            // Show mini loading animation between questions
+            showMiniLoading(() => {
+                state.currentQuestion--;
+                updateUI();
+            });
         }
+    }
+    
+    // Show a mini loading animation between questions
+    function showMiniLoading(callback) {
+        // Fade out current content
+        const scenarioCard = document.querySelector('.scenario-card');
+        const scenarioContext = document.querySelector('.scenario-context');
+        const scenarioPrompt = document.querySelector('.scenario-prompt');
+        
+        // Remove fade-in classes
+        if (scenarioContext && scenarioPrompt) {
+            scenarioContext.classList.remove('fade-in');
+            scenarioPrompt.classList.remove('fade-in');
+        }
+        
+        scenarioCard.style.opacity = '0';
+        scenarioCard.style.transform = 'translateY(10px)';
+        
+        // Execute callback after short delay
+        setTimeout(() => {
+            callback();
+            
+            // Fade in new content
+            setTimeout(() => {
+                scenarioCard.style.opacity = '1';
+                scenarioCard.style.transform = 'translateY(0)';
+            }, 50);
+        }, 300);
+    }
+    
+    // Determine appropriate scale labels based on the question
+    function getScaleLabelsForQuestion(question) {
+        // Default labels
+        let leftLabel = "Strongly Disagree";
+        let middleLabel = "Neutral";
+        let rightLabel = "Strongly Agree";
+        
+        // Check for specific question patterns and set appropriate labels
+        const questionLower = question.toLowerCase();
+        
+        if (questionLower.includes("how comfortable")) {
+            leftLabel = "Very Uncomfortable";
+            middleLabel = "Neutral";
+            rightLabel = "Very Comfortable";
+        } 
+        else if (questionLower.includes("how likely")) {
+            leftLabel = "Very Unlikely";
+            middleLabel = "Somewhat Likely";
+            rightLabel = "Very Likely";
+        }
+        else if (questionLower.includes("how important")) {
+            leftLabel = "Not Important";
+            middleLabel = "Moderately Important";
+            rightLabel = "Very Important";
+        }
+        else if (questionLower.includes("how much")) {
+            leftLabel = "Very Little";
+            middleLabel = "Moderately";
+            rightLabel = "Very Much";
+        }
+        else if (questionLower.includes("how often")) {
+            leftLabel = "Very Rarely";
+            middleLabel = "Sometimes";
+            rightLabel = "Very Often";
+        }
+        else if (questionLower.includes("how effective")) {
+            leftLabel = "Not Effective";
+            middleLabel = "Moderately Effective";
+            rightLabel = "Very Effective";
+        }
+        else if (questionLower.includes("how confident")) {
+            leftLabel = "Not Confident";
+            middleLabel = "Somewhat Confident";
+            rightLabel = "Very Confident";
+        }
+        else if (questionLower.includes("how willing")) {
+            leftLabel = "Not Willing";
+            middleLabel = "Somewhat Willing";
+            rightLabel = "Very Willing";
+        }
+        else if (questionLower.includes("how frequently")) {
+            leftLabel = "Very Infrequently";
+            middleLabel = "Occasionally";
+            rightLabel = "Very Frequently";
+        }
+        
+        return { leftLabel, middleLabel, rightLabel };
     }
     
     // Update the UI based on current state
@@ -96,12 +228,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update text content
         scenarioNumber.textContent = state.currentQuestion + 1;
-        scenarioText.textContent = currentScenario.scenario;
-        scenarioQuestion.textContent = currentScenario.question;
+        
+        // Split the scenario text and question if needed
+        const scenarioContent = parseScenarioContent(currentScenario.scenario, currentScenario.question);
+        scenarioText.textContent = scenarioContent.context;
+        scenarioQuestion.textContent = scenarioContent.question;
+        
+        // Update scale labels based on the question
+        const { leftLabel, middleLabel, rightLabel } = getScaleLabelsForQuestion(currentScenario.question);
+        const labelElements = scaleLabels.querySelectorAll('span');
+        if (labelElements.length >= 3) {
+            labelElements[0].textContent = leftLabel;
+            labelElements[1].textContent = middleLabel;
+            labelElements[2].textContent = rightLabel;
+        }
         
         // Update progress indicators
-        const progressPercentage = (state.responses.length / state.totalQuestions) * 100;
+        const progressPercentage = ((state.currentQuestion + 1) / state.totalQuestions) * 100;
         progressFill.style.width = `${progressPercentage}%`;
+        
+        // Update the progress text with proper formatting for the gradient effect
         currentQuestionEl.textContent = state.currentQuestion + 1;
         totalQuestionsEl.textContent = state.totalQuestions;
         
@@ -120,30 +266,73 @@ document.addEventListener('DOMContentLoaded', function() {
             const radioToCheck = document.querySelector(`input[name="response"][value="${currentResponse.value}"]`);
             if (radioToCheck) {
                 radioToCheck.checked = true;
-                nextButton.disabled = false;
             }
-        } else {
-            nextButton.disabled = true;
         }
         
         // Update next button text
         if (state.currentQuestion === state.totalQuestions - 1) {
-            nextButton.textContent = 'View Results';
+            nextButton.textContent = 'Finish';
         } else {
             nextButton.textContent = 'Next';
         }
         
-        // Update scenario icon (create simple SVG based on scenario ID)
+        // Update scenario icon
         updateScenarioIcon(currentScenario);
         
-        // Add fade-in animation
-        scenarioText.classList.remove('fade-in');
-        scenarioQuestion.classList.remove('fade-in');
+        // Add fade-in animation to scenario content
+        const scenarioContext = document.querySelector('.scenario-context');
+        const scenarioPrompt = document.querySelector('.scenario-prompt');
         
-        setTimeout(() => {
-            scenarioText.classList.add('fade-in');
-            scenarioQuestion.classList.add('fade-in');
-        }, 50);
+        if (scenarioContext && scenarioPrompt) {
+            scenarioContext.classList.remove('fade-in');
+            scenarioPrompt.classList.remove('fade-in');
+            
+            setTimeout(() => {
+                scenarioContext.classList.add('fade-in');
+                
+                // Add a slight delay for the question to appear after the context
+                setTimeout(() => {
+                    scenarioPrompt.classList.add('fade-in');
+                }, 200);
+            }, 50);
+        }
+    }
+    
+    // Parse scenario content to separate context from question
+    function parseScenarioContent(scenarioText, questionText) {
+        // If the scenario already contains the question, extract it
+        if (scenarioText.includes(questionText)) {
+            const contextPart = scenarioText.replace(questionText, '').trim();
+            return {
+                context: contextPart,
+                question: questionText
+            };
+        }
+        
+        // Check if the scenario ends with a question mark - if so, try to split at the last sentence
+        if (scenarioText.trim().endsWith('?')) {
+            // Find the last sentence that ends with a question mark
+            const lastQuestionMarkIndex = scenarioText.lastIndexOf('?');
+            if (lastQuestionMarkIndex > 0) {
+                // Find the start of the question (look for the previous period or beginning of text)
+                let questionStartIndex = scenarioText.lastIndexOf('.', lastQuestionMarkIndex - 1);
+                questionStartIndex = questionStartIndex === -1 ? 0 : questionStartIndex + 1;
+                
+                const extractedQuestion = scenarioText.substring(questionStartIndex, lastQuestionMarkIndex + 1).trim();
+                const extractedContext = scenarioText.substring(0, questionStartIndex).trim();
+                
+                return {
+                    context: extractedContext,
+                    question: extractedQuestion || questionText // Fallback to provided question if extraction fails
+                };
+            }
+        }
+        
+        // Otherwise, return them as provided
+        return {
+            context: scenarioText,
+            question: questionText
+        };
     }
     
     // Create a unique icon for each scenario

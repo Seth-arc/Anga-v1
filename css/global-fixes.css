@@ -1,0 +1,63 @@
+/* Global Fixes for anga
+   These styles apply to all screen sizes and override the default styles */
+
+/* Remove border from results header and privacy header */
+.results-header, header.results-header {
+    border-bottom: none !important;
+}
+
+/* Fix question counter position in assessment page */
+.assessment-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    position: relative !important;
+}
+
+.logo-progress-container {
+    margin-bottom: var(--space-xs) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.logo {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.progress-text {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    font-size: 0.8rem !important;
+    color: var(--text-dim) !important;
+    transform: none !important;
+    margin-left: auto !important;
+    font-weight: var(--font-weight-medium) !important;
+}
+
+.progress-bar {
+    margin-top: var(--space-xs) !important;
+    width: 100% !important;
+    height: 4px !important;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+    .logo-progress-container {
+        padding-right: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .progress-text {
+        font-size: 0.75rem !important;
+    }
+    
+    .assessment-header {
+        padding: var(--space-md) var(--space-md) !important;
+    }
+}
+
+/* Additional global fixes can be added here */ 

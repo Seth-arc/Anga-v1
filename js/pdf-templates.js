@@ -35,45 +35,39 @@ function getStyleApplication(styleId) {
 function getStyleSpecificOnlineComponent(styleId, component) {
     const components = {
         1: { // All-Round Flexible
+            content: "Provide content in multiple formats (text, video, audio, interactive) to accommodate different learning preferences and needs.",
+            interaction: "Create diverse interaction opportunities including discussions, collaborative projects, and peer feedback with options for synchronous and asynchronous participation.",
             activities: "Design a variety of activity types (discussions, simulations, projects, reflections) that offer students choices in how they engage with content and demonstrate learning.",
-            communication: "Establish multiple channels (announcements, discussions, chats, video conferences) with clear guidelines for when and how to use each for different purposes.",
-            support: "Create a comprehensive support ecosystem with academic resources, technical guides, and personal check-ins accessible through multiple pathways.",
-            resources: "Develop diverse media formats (text, video, interactive elements) for key concepts to accommodate different learning preferences and needs.",
             evaluation: "Implement a mix of assessment types (formative, summative, self, peer) with options for different submission formats based on learning objectives."
         },
         2: { // Student-Centered
+            content: "Develop emotionally engaging content that incorporates personal stories, case studies, and real-world applications to foster connection with the material.",
+            interaction: "Focus on creating dialogue-rich spaces with regular video check-ins, personal messages, and structured opportunities for peer-to-peer connection.",
             activities: "Prioritize collaborative activities, reflective journaling, case discussions, and role-playing scenarios that foster emotional connection to the material.",
-            communication: "Focus on creating dialogue-rich spaces with regular video check-ins, personal messages, and structured opportunities for peer-to-peer connection.",
-            support: "Establish strong emotional support mechanisms including virtual office hours, peer mentoring systems, and regular one-on-one check-ins.",
-            resources: "Develop narrative-driven, relationally-focused resources that emphasize personal stories, case studies, and real-world applications.",
             evaluation: "Design reflective assessments that emphasize personal growth, peer feedback, and portfolio development over traditional testing."
         },
         3: { // Official Curriculum
+            content: "Create meticulously organized, curriculum-aligned content with clear connection to learning outcomes and assessment criteria.",
+            interaction: "Implement formal interaction protocols with structured Q&A opportunities, guided discussions, and systematic feedback channels.",
             activities: "Structure sequential learning activities with clear objectives, explicit instructions, and strong alignment to formal curriculum requirements.",
-            communication: "Implement formal communication protocols with regular announcements, detailed guidelines, and structured Q&A opportunities.",
-            support: "Create comprehensive study guides, detailed rubrics, structured review sessions, and systematic feedback mechanisms.",
-            resources: "Develop meticulously organized, curriculum-aligned resources with clear connection to learning outcomes and assessment criteria.",
             evaluation: "Implement criterion-referenced assessments with regular checkpoints, clear mastery targets, and structured remediation opportunities."
         },
         4: { // Straight Facts
+            content: "Develop streamlined, fact-focused content that highlights critical information and eliminates extraneous elements for maximum clarity.",
+            interaction: "Utilize direct, concise communication with clear expectations, focused questions, and efficient feedback mechanisms.",
             activities: "Design focused learning activities that emphasize key concepts, worked examples, structured practice, and immediate application of knowledge.",
-            communication: "Utilize direct, concise messaging with clear expectations, focused instructions, and efficient feedback mechanisms.",
-            support: "Create step-by-step guides, targeted FAQs, and specific improvement strategies focused on essential knowledge and skills.",
-            resources: "Develop streamlined, fact-focused content that highlights critical information and eliminates extraneous elements.",
             evaluation: "Implement objective assessments with clear metrics, specific feedback, and focus on accuracy and mastery of key concepts."
         },
         5: { // Big Conference
+            content: "Create visually engaging, professionally produced content with emphasis on high production value and audience engagement techniques.",
+            interaction: "Utilize broadcast-style communication with audience engagement features, polling, and structured Q&A sessions for large group interaction.",
             activities: "Create engaging presentation-based activities with strong visual elements, demonstrations, and opportunities for large group interaction.",
-            communication: "Utilize broadcast communications with dynamic delivery, audience engagement features, and professional presentation elements.",
-            support: "Develop comprehensive resource libraries, recorded content, and structured Q&A sessions to support independent learning.",
-            resources: "Create visually engaging, professionally produced content with emphasis on high production value and audience engagement.",
             evaluation: "Implement large-scale assessments with standardized feedback, comprehensive understanding checks, and automated grading when appropriate."
         },
         6: { // One-Off
+            content: "Develop modular, self-contained content units that can be accessed independently when needed for specific skills or concepts.",
+            interaction: "Utilize targeted, just-in-time communication with specific guidance related to immediate learning goals and challenges.",
             activities: "Design focused mini-lessons, targeted skill development exercises, and standalone learning modules that address specific competencies.",
-            communication: "Utilize direct instruction with clear objectives, focused feedback, and specific guidance related to immediate learning goals.",
-            support: "Create just-in-time resources, quick reference guides, and targeted assistance focused on specific tasks and challenges.",
-            resources: "Develop modular, self-contained learning materials that can be accessed independently when needed for specific skills.",
             evaluation: "Implement immediate assessment with specific feedback and targeted skill checks focused on discrete learning outcomes."
         }
     };
@@ -85,7 +79,8 @@ function getStyleSpecificOnlineComponent(styleId, component) {
 function getModuleStructureRecommendations(styleId) {
     const moduleStructures = {
         1: { // All-Round Flexible and Adaptable Teacher
-            structure: "Flexible, multi-path module structure with diverse learning resources",
+            approach: "Flexible, multi-path module structure with diverse learning resources",
+            description: "Your adaptable teaching style benefits from a module structure that offers multiple pathways through content, accommodating diverse learning preferences and needs. This approach allows students to engage with material in ways that best suit their individual learning styles.",
             components: [
                 "Multiple forms of content presentation (videos, readings, visualizations)",
                 "Variety of assessment types to accommodate different learning preferences",
@@ -95,7 +90,8 @@ function getModuleStructureRecommendations(styleId) {
             ]
         },
         2: { // Student-Centered, Sensitive Teacher
-            structure: "Community-focused module with emphasis on connection and reflection",
+            approach: "Community-focused module with emphasis on connection and reflection",
+            description: "Your empathetic teaching style thrives in an online environment that prioritizes human connection and emotional engagement. This structure creates spaces for meaningful interaction and personal reflection throughout the learning journey.",
             components: [
                 "Personal introduction activities and connection-building exercises",
                 "Reflective journals and discussion spaces throughout the module",
@@ -105,7 +101,8 @@ function getModuleStructureRecommendations(styleId) {
             ]
         },
         3: { // Official Curriculum Teacher
-            structure: "Systematically structured module with clear learning pathways and objectives",
+            approach: "Systematically structured module with clear learning pathways and objectives",
+            description: "Your structured teaching approach benefits from a highly organized online environment with explicit progression through curriculum objectives. This framework provides students with clear expectations and comprehensive coverage of required material.",
             components: [
                 "Comprehensive module outline with explicit learning outcomes",
                 "Structured learning units that align precisely with assessment",
@@ -115,7 +112,8 @@ function getModuleStructureRecommendations(styleId) {
             ]
         },
         4: { // Straight Facts No-Nonsense Teacher
-            structure: "Direct, fact-focused module with clear progression through concepts",
+            approach: "Direct, fact-focused module with clear progression through concepts",
+            description: "Your direct teaching style is enhanced by a streamlined online structure that emphasizes clarity and efficiency. This approach focuses on essential information and practical application, minimizing extraneous elements.",
             components: [
                 "Concise, focused content delivery with essential information highlighted",
                 "Step-by-step tutorials for complex procedures and concepts",
@@ -125,7 +123,8 @@ function getModuleStructureRecommendations(styleId) {
             ]
         },
         5: { // Big Conference Teacher
-            structure: "Presentation-focused module with engaging multimedia content",
+            approach: "Presentation-focused module with engaging multimedia content",
+            description: "Your dynamic presentation style translates to an online environment that emphasizes high-quality multimedia content and engaging delivery. This structure maintains student attention through professional presentation and interactive elements.",
             components: [
                 "High-quality lecture videos as primary content delivery method",
                 "Large group synchronous sessions with audience response activities",
@@ -135,7 +134,8 @@ function getModuleStructureRecommendations(styleId) {
             ]
         },
         6: { // One-Off Teacher
-            structure: "Modular, standalone units with focused skill development",
+            approach: "Modular, standalone units with focused skill development",
+            description: "Your targeted teaching approach works well with a modular online structure that focuses on specific skills and concepts. This framework allows for efficient, just-in-time learning with immediate application and feedback.",
             components: [
                 "Self-contained learning units that can be completed independently",
                 "Just-in-time resources accessible at point of need",
@@ -214,353 +214,311 @@ function getOnlineTeachingStrategies(styleId) {
 function getStyleRecommendations(styleId) {
     const recommendations = {
         1: { // All-Round Flexible and Adaptable Teacher
-            overview: "This teaching style naturally aligns with UDL's principles of providing multiple means of engagement, representation, and action/expression. As an All-Round Flexible and Adaptable Teacher, you possess a remarkable ability to pivot and adjust your teaching methods to meet diverse student needs. Your teaching approach demonstrates a natural inclination toward inclusivity and versatility, making you particularly effective in diverse learning environments. This adaptability is your superpower – you can seamlessly shift between different teaching methods while maintaining high educational standards.",
+            overview: "As an All-Round Flexible and Adaptable Teacher, you possess a remarkable ability to pivot and adjust your teaching methods to meet diverse student needs. Your teaching approach demonstrates a natural inclination toward inclusivity and versatility, making you particularly effective in diverse learning environments. This adaptability is your superpower – you can seamlessly shift between different teaching methods while maintaining high educational standards.",
             learningActivities: [
                 "Incorporate varied instructional methods including lectures, group work, and hands-on activities",
-                "Design activities that accommodate different skill levels",
+                "Design activities that accommodate different skill levels and learning preferences",
                 "Use multimedia resources to present content in multiple formats",
                 "Implement both individual and collaborative learning opportunities"
             ],
-            enhancingEngagement: [
-                "Provide choice in assignment formats",
-                "Create flexible learning paths",
+            engagementStrategies: [
+                "Provide choice in assignment formats and learning pathways",
+                "Create flexible learning paths with multiple entry points",
                 "Use technology to support diverse learning needs",
-                "Incorporate real-world applications"
+                "Incorporate real-world applications that connect to student interests"
             ],
-            supportGuidance: [
-                "Develop clear rubrics for assignments",
-                "Offer multiple channels for student support",
-                "Provide scaffolded learning materials",
-                "Create accessible resources for all learners"
-            ],
-            communication: [
-                "Use multiple communication channels",
-                "Implement regular check-ins",
-                "Provide both synchronous and asynchronous options",
-                "Maintain consistent feedback loops"
-            ],
-            evaluation: [
-                "Use diverse assessment methods",
+            assessmentApproaches: [
+                "Use diverse assessment methods that accommodate different strengths",
                 "Implement both formative and summative assessments",
-                "Allow multiple attempts when appropriate",
-                "Provide opportunities for self-assessment"
+                "Allow multiple attempts or formats when appropriate",
+                "Provide opportunities for self-assessment and reflection"
             ]
         },
         2: { // Student-Centered, Sensitive Teacher
-            overview: "This style aligns with constructivist principles of active learning and knowledge construction through experience. Your empathetic and nurturing approach to teaching creates an environment where students feel valued and understood. As a Student-Centered, Sensitive Teacher, you excel at building meaningful connections with your students and fostering a supportive learning community. Your natural ability to recognize and respond to individual student needs makes you particularly effective at creating inclusive and emotionally safe learning spaces.",
+            overview: "As a Student-Centered, Sensitive Teacher, you excel at building meaningful connections with your students and fostering a supportive learning community. Your empathetic and nurturing approach creates an environment where students feel valued and understood. Your natural ability to recognize and respond to individual student needs makes you particularly effective at creating inclusive and emotionally safe learning spaces.",
             learningActivities: [
-                "Design role-playing scenarios",
-                "Implement small group discussions",
-                "Use case studies",
-                "Create collaborative projects"
+                "Design role-playing scenarios that develop empathy and perspective-taking",
+                "Implement small group discussions that foster connection and belonging",
+                "Use case studies that highlight human experiences and emotional dimensions",
+                "Create collaborative projects that build community and shared purpose"
             ],
-            enhancingEngagement: [
-                "Foster emotional connections to content",
-                "Create safe spaces for expression",
-                "Implement peer learning activities",
-                "Use narrative-based learning"
+            engagementStrategies: [
+                "Foster emotional connections to content through personal narratives",
+                "Create safe spaces for expression and authentic sharing",
+                "Implement peer learning activities that build relationships",
+                "Use narrative-based learning that connects to student experiences"
             ],
-            supportGuidance: [
-                "Provide individualized feedback",
-                "Create supportive learning communities",
-                "Implement peer mentoring",
-                "Offer emotional support resources"
-            ],
-            communication: [
-                "Use empathetic communication strategies",
-                "Implement active listening techniques",
-                "Create opportunities for student voice",
-                "Foster open dialogue"
-            ],
-            evaluation: [
-                "Use reflective assessments",
-                "Implement peer evaluation",
-                "Create portfolio-based assessments",
-                "Focus on growth over grades"
+            assessmentApproaches: [
+                "Use reflective assessments that emphasize personal growth",
+                "Implement peer evaluation and feedback processes",
+                "Create portfolio-based assessments that show development over time",
+                "Focus on growth over grades with emphasis on improvement"
             ]
         },
         3: { // Official Curriculum Teacher
-            overview: "This style aligns with systematic, explicit instruction methods focused on clear learning objectives. Your structured and methodical approach to teaching ensures comprehensive coverage of essential learning objectives. As an Official Curriculum Teacher, you excel at creating clear learning pathways and maintaining high academic standards. Your commitment to systematic instruction and careful planning provides students with a solid foundation for academic success.",
+            overview: "As an Official Curriculum Teacher, you excel at creating clear learning pathways and maintaining high academic standards. Your structured and methodical approach ensures comprehensive coverage of essential learning objectives. Your commitment to systematic instruction and careful planning provides students with a solid foundation for academic success and ensures alignment with curriculum requirements.",
             learningActivities: [
-                "Create structured lesson plans",
-                "Implement clear learning objectives",
-                "Use systematic instruction sequences",
-                "Design aligned assessments"
+                "Create structured lesson plans with clear progression through concepts",
+                "Implement clear learning objectives aligned with curriculum standards",
+                "Use systematic instruction sequences that build on prior knowledge",
+                "Design aligned assessments that measure mastery of specific objectives"
             ],
-            enhancingEngagement: [
-                "Use clear success criteria",
-                "Implement progress monitoring",
-                "Create milestone achievements",
-                "Use competency-based progression"
+            engagementStrategies: [
+                "Use clear success criteria so students understand expectations",
+                "Implement progress monitoring to track advancement toward goals",
+                "Create milestone achievements to mark progress through curriculum",
+                "Use competency-based progression with clear mastery indicators"
             ],
-            supportGuidance: [
-                "Provide detailed study guides",
-                "Create structured review sessions",
-                "Implement regular office hours",
-                "Offer clear assignment guidelines"
-            ],
-            communication: [
-                "Use formal communication channels",
-                "Implement regular announcements",
-                "Create clear documentation",
-                "Maintain consistent messaging"
-            ],
-            evaluation: [
-                "Use criterion-referenced assessments",
-                "Implement regular checkpoints",
-                "Create clear rubrics",
-                "Focus on mastery learning"
+            assessmentApproaches: [
+                "Develop criterion-referenced assessments aligned with objectives",
+                "Create comprehensive assessment plans that measure all key outcomes",
+                "Implement regular formative checks to ensure understanding",
+                "Use detailed rubrics that clarify performance expectations"
             ]
         },
         4: { // Straight Facts No-Nonsense Teacher
-            overview: "This style aligns with cognitive approaches focusing on information processing and knowledge organization. Your direct and focused approach to teaching cuts through complexity to deliver clear, actionable knowledge. As a Straight Facts No-Nonsense Teacher, you excel at presenting information in a logical, straightforward manner that resonates with students who appreciate clarity and precision. Your ability to distill complex concepts into manageable components makes you particularly effective at teaching challenging subject matter.",
+            overview: "As a Straight Facts No-Nonsense Teacher, you excel at delivering clear, concise instruction focused on essential knowledge and skills. Your direct approach cuts through complexity to help students grasp key concepts efficiently. Your commitment to clarity and precision provides students with the fundamental understanding they need without unnecessary complications.",
             learningActivities: [
-                "Create clear concept presentations",
-                "Implement structured practice",
-                "Use worked examples",
-                "Design sequential learning activities"
+                "Create focused learning activities that emphasize key concepts",
+                "Implement worked examples that demonstrate problem-solving processes",
+                "Use direct instruction for complex or foundational concepts",
+                "Design practice activities with immediate application of knowledge"
             ],
-            enhancingEngagement: [
-                "Focus on essential concepts",
-                "Use clear examples",
-                "Implement immediate application",
-                "Create focused learning paths"
+            engagementStrategies: [
+                "Use clear explanations that eliminate confusion and ambiguity",
+                "Implement visual organizers that highlight key information",
+                "Create step-by-step guides for complex procedures",
+                "Use frequent knowledge checks to ensure understanding"
             ],
-            supportGuidance: [
-                "Provide clear instructions",
-                "Create step-by-step guides",
-                "Implement targeted feedback",
-                "Offer specific improvement strategies"
-            ],
-            communication: [
-                "Use direct communication",
-                "Implement clear expectations",
-                "Create focused messages",
-                "Maintain professional boundaries"
-            ],
-            evaluation: [
-                "Use objective assessments",
-                "Implement clear metrics",
-                "Create specific feedback",
-                "Focus on accuracy and mastery"
+            assessmentApproaches: [
+                "Develop objective assessments with clear correct answers",
+                "Create targeted quizzes focused on essential knowledge",
+                "Implement immediate feedback mechanisms",
+                "Use practical demonstrations of skill mastery"
             ]
         },
         5: { // Big Conference Teacher
-            overview: "This style aligns with observational learning and modeling principles. Your dynamic and engaging presentation style captures attention and inspires learning on a larger scale. As a Big Conference Teacher, you excel at creating memorable learning experiences that resonate with large groups of students. Your natural ability to command attention and deliver content in an engaging manner makes you particularly effective in lecture-based and presentation-oriented learning environments.",
+            overview: "As a Big Conference Teacher, you excel at engaging large groups through dynamic presentation and commanding presence. Your confidence and ability to communicate effectively at scale creates memorable learning experiences. Your natural talent for maintaining audience attention and delivering content with impact makes you particularly effective when introducing important concepts to large groups.",
             learningActivities: [
-                "Design large group presentations",
-                "Implement demonstration activities",
-                "Use multimedia presentations",
-                "Create interactive lectures"
+                "Create engaging presentations with strong visual elements",
+                "Implement demonstration activities that showcase processes",
+                "Use audience response systems to maintain engagement",
+                "Design activities that work well in large group settings"
             ],
-            enhancingEngagement: [
-                "Use audience response systems",
-                "Implement dynamic presentations",
-                "Create interactive elements",
-                "Focus on visual engagement"
+            engagementStrategies: [
+                "Use storytelling techniques that capture attention",
+                "Implement multimedia presentations with high production value",
+                "Create dynamic delivery with varied pace and emphasis",
+                "Use strategic questioning to maintain audience involvement"
             ],
-            supportGuidance: [
-                "Provide lecture materials",
-                "Create resource libraries",
-                "Implement Q&A sessions",
-                "Offer recorded content"
-            ],
-            communication: [
-                "Use broadcast communications",
-                "Implement audience interaction",
-                "Create engaging presentations",
-                "Maintain professional presence"
-            ],
-            evaluation: [
-                "Use large-scale assessments",
-                "Implement automated grading",
-                "Create standardized feedback",
-                "Focus on comprehensive understanding"
+            assessmentApproaches: [
+                "Develop comprehensive assessments that measure broad understanding",
+                "Create standardized evaluation methods for consistent feedback",
+                "Implement audience response systems for immediate checks",
+                "Use automated grading when appropriate for efficiency"
             ]
         },
         6: { // One-Off Teacher
-            overview: "This style aligns with focused, experience-based learning opportunities. Your focused and efficient approach to teaching makes you particularly effective at delivering targeted, high-impact learning experiences. As a One-Off Teacher, you excel at creating concentrated learning opportunities that address specific skills or concepts. Your ability to design and deliver focused, standalone learning experiences makes you especially valuable in professional development and skill-based training contexts.",
+            overview: "As a One-Off Teacher, you excel at delivering targeted, efficient instruction that addresses specific skills or concepts. Your focused approach creates high-impact learning moments that efficiently build competency. Your ability to identify and address specific learning needs makes you particularly valuable in contexts requiring precise skill development and just-in-time learning.",
             learningActivities: [
-                "Create targeted mini-lessons",
-                "Implement focused tutorials",
-                "Use specific skill development",
-                "Design standalone modules"
+                "Create focused mini-lessons targeting specific skills",
+                "Implement targeted skill development exercises",
+                "Use modular learning units that address discrete competencies",
+                "Design just-in-time learning resources for point-of-need support"
             ],
-            enhancingEngagement: [
-                "Focus on immediate application",
-                "Implement quick wins",
-                "Create clear outcomes",
-                "Use targeted practice"
+            engagementStrategies: [
+                "Use clear objectives that specify exactly what will be learned",
+                "Implement immediate application of new skills",
+                "Create focused attention through elimination of distractions",
+                "Use targeted examples that illustrate specific applications"
             ],
-            supportGuidance: [
-                "Provide just-in-time support",
-                "Create quick reference guides",
-                "Implement targeted assistance",
-                "Offer specific resources"
-            ],
-            communication: [
-                "Use direct instruction",
-                "Implement focused feedback",
-                "Create clear objectives",
-                "Maintain specific focus"
-            ],
-            evaluation: [
-                "Use immediate assessment",
-                "Implement specific feedback",
-                "Create targeted checkpoints",
-                "Focus on skill mastery"
+            assessmentApproaches: [
+                "Develop skill-specific assessments with clear success criteria",
+                "Create immediate feedback mechanisms for rapid improvement",
+                "Implement targeted skill checks focused on specific outcomes",
+                "Use practical application tasks that demonstrate competency"
             ]
         }
     };
     
-    // Return the recommendations for the requested style or a default if not found
     return recommendations[styleId] || {
-        overview: "Your teaching style represents a unique approach to education that can be enhanced through targeted strategies.",
-        learningActivities: [],
-        enhancingEngagement: [],
-        supportGuidance: [],
-        communication: [],
-        evaluation: []
+        overview: "Your teaching style reflects your unique approach to facilitating learning. The following recommendations are designed to leverage your natural strengths while providing opportunities for continued growth and development.",
+        learningActivities: [
+            "Design activities that align with your teaching preferences",
+            "Implement a variety of instructional approaches",
+            "Create opportunities for active student engagement",
+            "Use authentic learning experiences"
+        ],
+        engagementStrategies: [
+            "Foster student motivation through relevant content",
+            "Create clear connections to learning objectives",
+            "Implement strategies that maintain attention",
+            "Use varied approaches to accommodate different learners"
+        ],
+        assessmentApproaches: [
+            "Develop assessments aligned with learning objectives",
+            "Create opportunities for meaningful feedback",
+            "Implement both formative and summative assessment",
+            "Use authentic assessment when possible"
+        ]
     };
 }
 
 // Generate PDF content with enhanced instructional design copy
 function generatePdfContent(userName, dominantStyle, scores, rankedStyles, institution = '', options = {}) {
     // Set default options
-    const defaults = {
+    const settings = {
         includeProfile: true,
-        includeRecommendations: true,
-        includeOnline: true
+        includeStrategies: true,
+        includeOnline: true,
+        ...options
     };
     
-    const settings = { ...defaults, ...options };
-    
-    // Get the detailed recommendations for the dominant style
-    const styleRecommendations = getStyleRecommendations(dominantStyle.id);
+    // Get recommendations for the dominant style
+    const recommendations = getStyleRecommendations(dominantStyle.id);
+    const onlineStrategies = getOnlineTeachingStrategies(dominantStyle.id);
     const moduleStructure = getModuleStructureRecommendations(dominantStyle.id);
+    
+    // Personalized messages for each teaching style
+    const personalizedMessages = {
+        1: "Your adaptability is your greatest strength as an educator. You naturally adjust your approach to meet diverse student needs, creating inclusive learning environments where all students can thrive. Continue leveraging this flexibility to reach every learner in your classroom.",
+        2: "Your empathetic approach creates powerful connections with your students. By prioritizing emotional engagement and small group dynamics, you foster a supportive learning environment where students feel valued and understood. This emotional intelligence is a rare and valuable gift in education.",
+        3: "Your structured approach provides students with clear pathways to success. Your commitment to well-prepared, curriculum-aligned teaching ensures comprehensive coverage of essential learning objectives while maintaining high academic standards. This foundation gives students confidence in their educational journey.",
+        4: "Your clarity and precision cut through complexity, delivering knowledge in a straightforward manner that resonates with students. Your ability to distill complex concepts into manageable components makes challenging subject matter accessible and actionable for your students.",
+        5: "Your confidence and presence in front of large audiences creates memorable learning experiences. You have a natural ability to command attention and communicate ideas effectively at scale, making you particularly effective when delivering important concepts to large groups.",
+        6: "Your focused approach to teaching creates high-impact learning moments. You excel at delivering targeted, efficient instruction that addresses specific skills or concepts, making you especially valuable in contexts requiring precise skill development and just-in-time learning."
+    };
+    
+    // Get personalized message or fall back to original description
+    const personalizedMessage = personalizedMessages[dominantStyle.id] || dominantStyle.description;
+    
+    // Format the date in a more professional way
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
     
     // Build the HTML content based on the selected options
     let htmlContent = `
         <header>
-            <h1 class="title">Teaching Style Profile</h1>
-            <p class="subtitle">Based on the Staffordshire Evaluation of Teaching Styles (SETS)©</p>
-            <p class="user-name">Prepared for: ${userName}${institution ? ` - ${institution}` : ''}</p>
-            <p class="date">Generated on: ${new Date().toLocaleDateString()}</p>
+            <div class="cover-page">
+                <h1 class="title">Teaching Style Profile</h1>
+                <p class="subtitle">Based on the Staffordshire Evaluation of Teaching Styles (SETS)©</p>
+                <div class="user-details">
+                    <p class="user-name">Prepared for: ${userName}${institution ? `<br><span class="institution">${institution}</span>` : ''}</p>
+                    <p class="date">Generated on: ${formattedDate}</p>
+                </div>
+            </div>
+            <div class="page-break"></div>
         </header>
         
         <section class="section introduction-section">
             <h2 class="section-title">Your Pedagogical Identity</h2>
             <p class="intro-text">
-                Welcome to your personalized teaching style profile. This report illuminates your unique pedagogical approach and provides evidence-based strategies that align with your natural teaching inclinations. Understanding your teaching identity is a powerful step toward intentional practice and meaningful student engagement. As educators, our teaching styles reflect not only our professional expertise but also our values, beliefs, and approaches to fostering learning environments.
+                Welcome to your personalized teaching style profile. This report illuminates your unique pedagogical approach and provides evidence-based strategies that align with your natural teaching inclinations. Understanding your teaching identity is a powerful step toward intentional practice and meaningful student engagement.
             </p>
             
             <div class="dominant-style">
                 <div class="style-info">
                     <h3 class="style-name">${dominantStyle.name}</h3>
-                    <p>${dominantStyle.description}</p>
+                    <p class="style-description">${personalizedMessage}</p>
                     <div class="theory-box">
                         <div class="theory-title">Aligned Learning Theory: ${dominantStyle.theory}</div>
                         <p class="theory-description">${getTheoryDescription(dominantStyle.theory)}</p>
                     </div>
                 </div>
                 <div class="style-score">
-                    ${scores[dominantStyle.id]}%
+                    <div class="score-value">${scores[dominantStyle.id]}%</div>
+                    <div class="score-label">Alignment</div>
                 </div>
             </div>
             
             <p class="style-impact">
-                Your dominant teaching style influences how you design learning experiences, facilitate interactions, assess student understanding, and create learning environments. The insights and recommendations in this report build upon your natural strengths while offering pathways for continued professional growth and adaptability across diverse educational contexts.
+                Your dominant teaching style influences how you design learning experiences, facilitate interactions, assess student understanding, and create learning environments. The insights and recommendations in this report build upon your natural strengths while offering pathways for continued professional growth.
             </p>
         </section>
     `;
     
-    // Add profile section if selected
+    // Add teaching style profile section if selected
     if (settings.includeProfile) {
         htmlContent += `
-            <section class="section">
-                <h2 class="section-title">Teaching Style Profile: Your Pedagogical Ecosystem</h2>
+            <div class="page-break"></div>
+            <section class="section profile-section">
+                <h2 class="section-title">Your Teaching Style Profile</h2>
                 
                 <p class="section-intro">
-                    While your dominant teaching style represents your primary approach, your complete profile reveals the rich interplay of multiple teaching modalities that form your pedagogical ecosystem. This multidimensional perspective acknowledges that effective educators often draw from diverse approaches to meet learning objectives and student needs. Understanding your complete profile helps you leverage secondary strengths and identify areas for potential growth.
+                    Your teaching style profile reflects your pedagogical preferences and strengths. While your dominant style is ${dominantStyle.name}, you also incorporate elements from other teaching approaches. Understanding this profile helps you leverage your strengths while identifying areas for potential growth and adaptation.
                 </p>
                 
                 <div class="profile-content">
-                    ${rankedStyles.map(style => `
+                    ${rankedStyles.map((style, index) => `
                         <div class="style-item">
-                            <h3 class="style-name">${style.name} (${style.score}%)</h3>
-                            <p>${style.description}</p>
-                            <p class="style-application">
-                                <strong>Instructional Impact:</strong> ${getStyleApplication(style.id)}
-                            </p>
+                            <div class="style-header">
+                                <h3 class="style-name">${index + 1}. ${style.name}</h3>
+                                <div class="style-score-small">${style.score}%</div>
+                            </div>
+                            <p class="style-description">${style.description}</p>
+                            <p class="style-application">${getStyleApplication(style.id)}</p>
                         </div>
                     `).join('')}
                 </div>
                 
                 <div class="profile-reflection">
-                    <h4>Reflection Opportunity</h4>
-                    <p>Consider how your style profile aligns with your teaching context, subject matter, and the diverse needs of your students. What aspects of other teaching styles might you intentionally incorporate to enhance your effectiveness in specific learning scenarios?</p>
+                    <h4>Reflection Point</h4>
+                    <p>Consider how your teaching style profile aligns with your educational values and the needs of your students. Are there contexts where incorporating elements from your less dominant styles might enhance student learning? How might you intentionally develop versatility across different teaching approaches?</p>
                 </div>
             </section>
         `;
     }
     
     // Add recommendations section if selected
-    if (settings.includeRecommendations) {
+    if (settings.includeStrategies) {
         htmlContent += `
-            <section class="section">
+            <div class="page-break"></div>
+            <section class="section recommendations-section">
                 <h2 class="section-title">Evidence-Based Practice Recommendations</h2>
                 
                 <p class="section-intro">
-                    The following recommendations are designed to amplify your natural strengths as a ${dominantStyle.name}. These strategies are informed by both educational research and best practices in instructional design. Each category focuses on a different aspect of the teaching and learning process, providing actionable approaches that align with your pedagogical identity while maximizing student engagement and achievement.
+                    The following recommendations are designed to amplify your natural strengths as a ${dominantStyle.name}. These strategies are informed by both educational research and best practices in instructional design.
                 </p>
                 
-                <p>${styleRecommendations.overview}</p>
+                <p class="overview-text">${recommendations.overview}</p>
                 
                 <div class="recommendations">
                     <h3 class="subsection-title">Learning Activities: Designing Purposeful Engagement</h3>
                     <p class="subsection-intro">
                         Learning activities form the core of student experience, translating your instructional goals into meaningful engagement. The following activities leverage your strengths as a ${dominantStyle.name} to create authentic learning opportunities:
                     </p>
-                    <ul>
-                        ${styleRecommendations.learningActivities.map(item => `<li>${item}</li>`).join('')}
+                    <ul class="recommendations-list">
+                        ${recommendations.learningActivities.map(item => `<li>${item}</li>`).join('')}
                     </ul>
-                    
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="recommendations">
                     <h3 class="subsection-title">Enhancing Engagement: Creating Cognitive and Emotional Connection</h3>
                     <p class="subsection-intro">
                         Student engagement encompasses attention, interest, curiosity, and motivation—essential elements for effective learning. These strategies help foster deep engagement through approaches aligned with your teaching style:
                     </p>
-                    <ul>
-                        ${styleRecommendations.enhancingEngagement.map(item => `<li>${item}</li>`).join('')}
+                    <ul class="recommendations-list">
+                        ${recommendations.engagementStrategies.map(item => `<li>${item}</li>`).join('')}
                     </ul>
                     
-                    <h3 class="subsection-title">Support and Guidance: Scaffolding the Learning Journey</h3>
+                    <h3 class="subsection-title">Assessment Approaches: Measuring Learning Authentically</h3>
                     <p class="subsection-intro">
-                        Effective learning requires appropriate guidance that provides structure while encouraging autonomy. These support mechanisms leverage your natural approach to mentoring and facilitating:
+                        Assessment is most effective when aligned with your teaching approach and learning objectives. These assessment strategies complement your ${dominantStyle.name} style while providing meaningful insights into student learning:
                     </p>
-                    <ul>
-                        ${styleRecommendations.supportGuidance.map(item => `<li>${item}</li>`).join('')}
-                    </ul>
-                    
-                    <h3 class="subsection-title">Communication: Fostering Clarity and Connection</h3>
-                    <p class="subsection-intro">
-                        Communication is the vehicle through which teaching and learning unfold. These strategies optimize your communication approach to enhance understanding, build relationships, and create inclusive learning communities:
-                    </p>
-                    <ul>
-                        ${styleRecommendations.communication.map(item => `<li>${item}</li>`).join('')}
-                    </ul>
-                    
-                    <h3 class="subsection-title">Evaluation: Assessing for Growth and Understanding</h3>
-                    <p class="subsection-intro">
-                        Assessment and evaluation provide insights into student learning while guiding instructional decisions. These evaluation methods align with your approach while providing meaningful feedback for both you and your students:
-                    </p>
-                    <ul>
-                        ${styleRecommendations.evaluation.map(item => `<li>${item}</li>`).join('')}
+                    <ul class="recommendations-list">
+                        ${recommendations.assessmentApproaches.map(item => `<li>${item}</li>`).join('')}
                     </ul>
                 </div>
                 
                 <div class="implementation-note">
-                    <h4>Implementation Approach</h4>
-                    <p>Consider implementing these recommendations incrementally, selecting one or two strategies from each category to integrate into your current practice. Reflection on the impact of these changes will help you refine your approach and build upon successful implementations.</p>
+                    <h4>Implementation Strategy</h4>
+                    <p>When implementing these recommendations, start with 1-2 strategies that most resonate with you and your current teaching context. After integrating these successfully, gradually incorporate additional approaches. This incremental implementation allows for thoughtful adaptation and reflection on impact.</p>
                 </div>
             </section>
         `;
@@ -569,11 +527,12 @@ function generatePdfContent(userName, dominantStyle, scores, rankedStyles, insti
     // Add online teaching strategies section if selected
     if (settings.includeOnline) {
         htmlContent += `
-            <section class="section">
+            <div class="page-break"></div>
+            <section class="section online-section">
                 <h2 class="section-title">Digital Pedagogies: Translating Your Teaching Style to Online Environments</h2>
                 
                 <p class="section-intro">
-                    Online and blended learning environments offer unique opportunities and challenges for educators. This section explores how to effectively translate your teaching style into digital spaces while maintaining pedagogical integrity. The transition to online teaching isn't merely about technology—it's about thoughtfully redesigning learning experiences to leverage both your instructional strengths and the affordances of digital tools.
+                    Online and blended learning environments offer unique opportunities and challenges for educators. This section explores how to effectively translate your teaching style into digital spaces while maintaining pedagogical integrity.
                 </p>
                 
                 <h3 class="subsection-title">Strategic Approaches for Online Teaching</h3>
@@ -582,55 +541,46 @@ function generatePdfContent(userName, dominantStyle, scores, rankedStyles, insti
                 </p>
                 
                 <div class="recommendations">
-                    <ul>
-                        ${getOnlineTeachingStrategies(dominantStyle.id).map(item => `<li>${item}</li>`).join('')}
+                    <ul class="recommendations-list online-strategies">
+                        ${onlineStrategies.map(item => `<li>${item}</li>`).join('')}
                     </ul>
                 </div>
-                
+            </section>
+
+            <section class="section">
                 <div class="online-module">
                     <h3 class="subsection-title">Architecting Your Online Learning Environment</h3>
                     <p class="module-intro">
                         The structure of your online learning environment should reflect your pedagogical approach while incorporating principles of effective digital design. Based on your teaching style profile, we recommend the following framework:
                     </p>
                     
-                    <p class="module-approach"><strong>${moduleStructure.structure}</strong></p>
+                    <p class="module-approach"><strong>${moduleStructure.approach}</strong></p>
+                    
+                    <p class="components-intro">${moduleStructure.description}</p>
                     
                     <div class="module-components">
-                        <p>Key architectural elements to incorporate:</p>
-                        <ul>
-                            ${moduleStructure.components.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <h3 class="subsection-title">Essential Components of Effective Online Modules</h3>
-                    <p class="components-intro">
-                        Regardless of teaching style, comprehensive online learning experiences should address five crucial dimensions. The following recommendations show how to adapt each dimension to align with your natural approach as a ${dominantStyle.name}:
-                    </p>
-                    
-                    <div class="component-grid">
-                        <div class="component-item">
-                            <h4>Learning Activities</h4>
-                            <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'activities')}</p>
-                        </div>
+                        <h4>Key Components for Your Online Learning Environment</h4>
                         
-                        <div class="component-item">
-                            <h4>Communication</h4>
-                            <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'communication')}</p>
-                        </div>
-                        
-                        <div class="component-item">
-                            <h4>Support and Guidance</h4>
-                            <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'support')}</p>
-                        </div>
-                        
-                        <div class="component-item">
-                            <h4>Resources</h4>
-                            <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'resources')}</p>
-                        </div>
-                        
-                        <div class="component-item">
-                            <h4>Evaluation</h4>
-                            <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'evaluation')}</p>
+                        <div class="component-grid">
+                            <div class="component-item">
+                                <h4>Content Presentation</h4>
+                                <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'content')}</p>
+                            </div>
+                            
+                            <div class="component-item">
+                                <h4>Student Interaction</h4>
+                                <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'interaction')}</p>
+                            </div>
+                            
+                            <div class="component-item">
+                                <h4>Learning Activities</h4>
+                                <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'activities')}</p>
+                            </div>
+                            
+                            <div class="component-item">
+                                <h4>Assessment & Feedback</h4>
+                                <p>${getStyleSpecificOnlineComponent(dominantStyle.id, 'evaluation')}</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -641,15 +591,16 @@ function generatePdfContent(userName, dominantStyle, scores, rankedStyles, insti
                 </div>
             </section>
             
-            <section class="section">
+            <div class="page-break"></div>
+            <section class="section conclusion-section">
                 <h2 class="section-title">Continuing Your Professional Development Journey</h2>
                 
                 <p class="conclusion-text">
-                    Understanding your teaching style profile is just the beginning of a rewarding journey toward pedagogical excellence. As you implement the recommendations in this report, consider maintaining a reflective teaching journal to document your experiences, insights, and the impact on student learning. This reflective practice can deepen your understanding of your teaching identity while guiding intentional growth.
+                    Understanding your teaching style profile is just the beginning of a rewarding journey toward pedagogical excellence. As you implement the recommendations in this report, consider maintaining a reflective teaching journal to document your experiences, insights, and the impact on student learning.
                 </p>
                 
                 <p class="conclusion-text">
-                    Remember that teaching styles are not fixed traits but dynamic approaches that evolve through experience, reflection, and professional development. You may find that certain contexts call for adaptations of your natural style or incorporation of elements from other approaches. This flexibility, informed by self-awareness, is a hallmark of teaching excellence.
+                    Remember that teaching styles are not fixed traits but dynamic approaches that evolve through experience, reflection, and professional development. You may find that certain contexts call for adaptations of your natural style or incorporation of elements from other approaches.
                 </p>
                 
                 <p class="conclusion-text">
@@ -666,8 +617,10 @@ function generatePdfContent(userName, dominantStyle, scores, rankedStyles, insti
     // Add footer
     htmlContent += `
         <footer class="footer">
-            <p>Generated by Anga Teaching Styles Assessment</p>
-            <p>Based on SETS© by Mohanna, Chambers & Wall (2007)</p>
+            <div class="footer-content">
+                <p>Generated by anga Teaching Styles Assessment</p>
+                <p>Based on SETS© by Mohanna, Chambers & Wall (2007)</p>
+            </div>
         </footer>
     `;
     

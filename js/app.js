@@ -3,7 +3,16 @@
  * Main application functionality
  */
 
+// Initialize Firebase
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if Firebase is initialized
+    if (firebase.apps.length) {
+        console.log('Firebase has been initialized successfully');
+        // Here you can call any initialization functions that depend on Firebase
+    } else {
+        console.error('Firebase initialization failed');
+    }
+
     // Initialize floating elements animation
     initFloatingElements();
     
@@ -53,13 +62,7 @@ function initFloatingElements() {
 
 // Initialize navigation
 function initNavigation() {
-    const startButton = document.getElementById('start-assessment');
-    
-    if (startButton) {
-        startButton.addEventListener('click', function() {
-            window.location.href = 'assessment.html';
-        });
-    }
+    // Add any navigation event listeners here
 }
 
 // Initialize smooth scroll
@@ -116,7 +119,11 @@ function checkPreviousSession() {
                 
                 // Add event listener to resume button
                 document.getElementById('resume-button').addEventListener('click', function() {
-                    window.location.href = 'assessment.html?resume=true';
+                    if (typeof showLoadingScreen === 'function') {
+                        showLoadingScreen('assessment.html?resume=true');
+                    } else {
+                        window.location.href = 'assessment.html?resume=true';
+                    }
                 });
             }
         }

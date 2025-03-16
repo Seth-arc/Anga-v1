@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching Style Assessment | Anga</title>
+    <title>anga</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/global-fixes.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 </head>
 <body>
     <div class="noise-overlay"></div>
     <div class="app-container">
         <header class="assessment-header">
-            <div class="logo">
-                <svg width="32" height="32" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M26 4L48 17V39L26 52L4 39V17L26 4Z" fill="none" stroke="#0A84FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M26 16L38 23V37L26 44L14 37V23L26 16Z" fill="#0A84FF" fill-opacity="0.1" stroke="#0A84FF" stroke-width="1.5"/>
-                    <circle cx="26" cy="28" r="4" fill="#0A84FF" fill-opacity="0.4"/>
-                </svg>
-                <h1 class="logo-text">anga</h1>
-            </div>
-            
-            <div class="progress-container">
+            <div class="logo-progress-container">
+                <div class="logo">
+                    <h1 class="logo-text">anga</h1>
+                </div>
                 <div class="progress-text">
                     <span id="current-question">1</span> of <span id="total-questions">24</span>
                 </div>
-                <div class="progress-bar">
-                    <div id="progress-fill" class="progress-fill" style="width: 4%;"></div>
-                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill" style="width: 4%;"></div>
             </div>
         </header>
         
@@ -38,17 +37,25 @@
                     </div>
                     <div>
                         <h3 class="scenario-number">Scenario <span id="scenario-number">1</span></h3>
-                        <h2 class="scenario-title">Teaching Approach</h2>
                     </div>
                 </div>
                 
-                <p id="scenario-text" class="scenario-text"></p>
-                <p id="scenario-question" class="scenario-question"></p>
+                <div class="scenario-content">
+                    <div class="scenario-context">
+                        <p id="scenario-text" class="scenario-text"></p>
+                    </div>
+                    
+                    <div class="scenario-prompt">
+                        <h4 class="question-label">Question:</h4>
+                        <p id="scenario-question" class="scenario-question"></p>
+                    </div>
+                </div>
                 
                 <div class="likert-scale">
                     <div class="scale-labels">
-                        <span>Strongly Disagree</span>
-                        <span>Strongly Agree</span>
+                        <span class="left-label">Strongly Disagree</span>
+                        <span class="middle-label">Neutral</span>
+                        <span class="right-label">Strongly Agree</span>
                     </div>
                     <div class="scale-options">
                         <label class="scale-option">
@@ -83,13 +90,17 @@
         
         <footer class="app-footer">
             <div class="footer-content">
-                <p class="copyright">© 2025 Anga · <a href="privacy.html">Privacy</a></p>
-                <p class="attribution">Based on SETS© by Mohanna, Chambers & Wall (2007)</p<p class="attribution">Based on SETS© by Mohanna, Chambers & Wall (2007)</p>
+                <p class="copyright">© anga (2025) · <a href="privacy.html">Privacy</a></p>
+                <p class="attribution">Based on SETS© by Mohanna, Chambers & Wall (2007)</p>
             </div>
         </footer>
     </div>
     
+    <script src="js/firebase-config.js"></script>
+    <script src="js/loading-screen.js"></script>
     <script src="js/scenarios.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/assessment.js"></script>
 </body>
 </html>

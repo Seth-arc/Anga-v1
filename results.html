@@ -2,25 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Teaching Style Results | Anga</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>anga</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile-fixes.css">
+    <link rel="stylesheet" href="css/global-fixes.css">
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <!-- PDF Generation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
     <div class="noise-overlay"></div>
+    <div class="radial-gradient"></div>
+    <div class="glow-effect"></div>
+    
     <div class="app-container">
         <header class="results-header">
-            <div class="logo">
-                <svg width="32" height="32" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M26 4L48 17V39L26 52L4 39V17L26 4Z" fill="none" stroke="#0A84FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M26 16L38 23V37L26 44L14 37V23L26 16Z" fill="#0A84FF" fill-opacity="0.1" stroke="#0A84FF" stroke-width="1.5"/>
-                    <circle cx="26" cy="28" r="4" fill="#0A84FF" fill-opacity="0.4"/>
-                </svg>
-                <h1 class="logo-text">anga</h1>
+            <div class="logo-container">
+                <div class="logo">
+                    <h1 class="logo-text">anga</h1>
+                </div>
             </div>
             <a href="index.html" class="results-back-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,13 +71,6 @@
                 </div>
             </div>
             
-            <div class="results-card detailed-analysis">
-                <h2 class="card-title">Your Teaching Style Profile</h2>
-                <div id="detailed-styles" class="detailed-styles">
-                    <!-- Detailed style information will be inserted by JavaScript -->
-                </div>
-            </div>
-            
             <div class="save-results-section">
                 <h3>Save Your Results</h3>
                 <p>Would you like to save your results for future reference? Enter your details below:</p>
@@ -104,27 +102,27 @@
                     </div>
                     
                     <div class="form-actions">
-                        <button type="submit" class="button button-primary">Save Results</button>
-                        <button type="button" id="skip-save" class="button button-outline">Skip</button>
+                        <button type="submit" class="btn btn-primary">Save Results</button>
+                        <button type="button" id="skip-save" class="btn btn-outline">Skip</button>
                     </div>
                 </form>
             </div>
             
             <div class="results-actions" style="display: none;">
-                <button id="download-pdf" class="button button-primary">
+                <button id="download-pdf" class="btn btn-primary">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 16L12 8M12 16L8 12M12 16L16 12M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     Download PDF Report
                 </button>
-                <button id="new-assessment" class="button button-outline">Start New Assessment</button>
+                <button id="new-assessment" class="btn btn-outline">Start New Assessment</button>
             </div>
         </main>
         
         <div id="download-dialog" class="dialog">
             <div class="dialog-content">
-                <h3>Prepare Your Report</h3>
-                <p>Your report will include personalized recommendations based on your dominant teaching style.</p>
+                <h3>Download Your Teaching Style Report</h3>
+                <p>Your PDF report will include personalized recommendations based on your dominant teaching style.</p>
                 
                 <div class="input-group">
                     <label for="user-name">Your Name:</label>
@@ -182,23 +180,30 @@
                 </div>
                 
                 <div class="dialog-buttons">
-                    <button id="cancel-download" class="button button-outline">Cancel</button>
-                    <button id="confirm-download" class="button button-primary">Download PDF</button>
+                    <button id="cancel-download" class="btn btn-outline">Cancel</button>
+                    <button id="confirm-download" class="btn btn-primary">Download PDF</button>
                 </div>
             </div>
         </div>
         
         <footer class="app-footer">
             <div class="footer-content">
-                <p class="copyright">© 2025 Anga · <a href="privacy.html">Privacy</a></p>
+                <p class="copyright">© anga (2025) <a href="privacy.html">Privacy</a></p>
                 <p class="attribution">Based on SETS© by Mohanna, Chambers & Wall (2007)</p>
             </div>
         </footer>
     </div>
     
+    <script src="js/loading-screen.js"></script>
     <script src="js/scenarios.js"></script>
+    <script src="js/firebase-config.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/pdf-templates.js"></script>
+    <script src="js/enhanced-pdf-templates.js"></script>
+    <script src="js/text-handling-utils.js"></script>
+    <script src="js/integration-helpers.js"></script>
+    <script src="js/mobile-tooltip-handler.js"></script>
+    <script src="js/mobile-chart-enhancer.js"></script>
     <script src="js/results.js"></script>
 </body>
 </html>

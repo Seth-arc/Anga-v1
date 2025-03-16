@@ -1,0 +1,219 @@
+/* Mobile Fixes for Results Page */
+/* Global fixes that apply to all screen sizes */
+.results-header {
+    border-bottom: none !important;
+}
+
+@media (max-width: 480px) {
+    .chart-card {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        margin-bottom: 3rem !important;
+        padding-bottom: var(--space-lg) !important;
+    }
+    
+    .results-charts {
+        margin-bottom: 4rem !important;
+    }
+    
+    .results-actions {
+        position: relative !important;
+        z-index: 10 !important;
+        margin-top: 3rem !important;
+        padding-top: 1rem !important;
+    }
+    
+    /* Improved home button styling */
+    .results-back-link {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: var(--space-sm) !important;
+        padding: 0.5rem 1rem !important;
+        border-radius: 6px !important;
+        font-size: 0.8rem !important;
+        cursor: pointer !important;
+        transition: var(--transition-bounce) !important;
+        text-decoration: none !important;
+        font-weight: var(--font-weight-medium) !important;
+        letter-spacing: 0.01em !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background-color: transparent !important;
+        color: var(--primary-dim) !important;
+        border: 1px solid var(--primary-very-dim) !important;
+    }
+    
+    .results-back-link svg {
+        width: 14px !important;
+        height: 14px !important;
+        transition: transform 0.3s ease !important;
+    }
+    
+    .results-back-link:hover {
+        color: var(--primary) !important;
+        background-color: rgba(72, 187, 150, 0.05) !important;
+        transform: translateY(-2px) !important;
+        border-color: var(--primary-dim) !important;
+        box-shadow: 0 4px 12px rgba(72, 187, 150, 0.1) !important;
+    }
+    
+    .results-back-link:hover svg {
+        transform: translateX(-2px) !important;
+    }
+    
+    .results-back-link:active {
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 4px rgba(72, 187, 150, 0.05) !important;
+    }
+    
+    .hexagon-chart {
+        height: 280px !important;
+        transform: scale(0.9) !important;
+        margin: 0 auto !important;
+    }
+    
+    .bar-chart {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding-bottom: var(--space-md) !important;
+    }
+    
+    .strength-bars-container {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding-bottom: var(--space-md) !important;
+    }
+    
+    .strength-bar-label {
+        margin-bottom: 2px !important;
+    }
+    
+    .strength-bar {
+        height: 24px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    /* Enhanced tooltip styles for mobile */
+    .tooltip-container {
+        position: relative !important;
+        cursor: pointer !important;
+    }
+    
+    /* Add a subtle indicator that the bar is tappable */
+    .tooltip-container .strength-bar {
+        position: relative !important;
+    }
+    
+    .tooltip-container .strength-bar::after {
+        content: "ⓘ" !important;
+        position: absolute !important;
+        right: 5px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        font-size: 12px !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        pointer-events: none !important;
+    }
+    
+    .tooltip {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 85% !important;
+        max-width: 300px !important;
+        z-index: 9999 !important; /* Ensure it's above everything */
+        background-color: var(--bg-surface) !important; /* Explicitly set background */
+        border: 1px solid var(--element-border) !important;
+        border-radius: 8px !important;
+        padding: 30px var(--space-md) var(--space-md) var(--space-md) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.3s ease, visibility 0.3s ease !important;
+        pointer-events: auto !important; /* Enable interactions */
+    }
+    
+    .tooltip.visible {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .tooltip::before {
+        display: none !important;
+    }
+    
+    /* Remove hover behavior on mobile */
+    .tooltip-container:hover .tooltip {
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+    
+    .tooltip-container:hover .tooltip.visible {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Close button for mobile tooltips */
+    .tooltip::after {
+        content: "×" !important;
+        position: absolute !important;
+        top: 8px !important;
+        right: 10px !important;
+        width: 28px !important;
+        height: 28px !important;
+        line-height: 28px !important;
+        text-align: center !important;
+        background-color: rgba(0, 0, 0, 0.1) !important;
+        color: var(--text-primary) !important;
+        border-radius: 50% !important;
+        font-size: 20px !important;
+        cursor: pointer !important;
+        font-weight: bold !important;
+    }
+    
+    /* Tooltip content styles */
+    .tooltip-title {
+        color: var(--primary) !important;
+        font-weight: var(--font-weight-semibold) !important;
+        margin-bottom: var(--space-sm) !important;
+        font-size: 1rem !important;
+    }
+    
+    .tooltip-description {
+        color: var(--text-primary) !important;
+        margin-bottom: var(--space-sm) !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .tooltip-theory {
+        color: var(--text-dim) !important;
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+        padding-top: var(--space-sm) !important;
+        border-top: 1px solid var(--element-border) !important;
+    }
+    
+    /* Add a semi-transparent overlay behind the tooltip */
+    body.tooltip-active::before {
+        content: "" !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background-color: rgba(0, 0, 0, 0.6) !important;
+        z-index: 9998 !important; /* Just below the tooltip */
+        animation: fadeIn 0.2s ease !important;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+} 
